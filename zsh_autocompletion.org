@@ -1,0 +1,44 @@
+#+TITLE: zsh auto completion
+#+AUTHOR: Holy Frege
+#+DESCRIPTION: Org-HTML export made simple.
+#+KEYWORDS:  org-mode, export, html, theme, style, css, js, bigblow
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 toc:t num:2
+#+MACRO: color @@html:<font color=></font>@@
+#+PROPERTY:  header-args :padline no
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+LATEX_HEADER: \usepackage{kotex}
+#+latex_header: \hypersetup{colorlinks=true}
+* shell을 사용하면서 가장 필요한 기능
+#+begin_note
+https://dev.to/rossijonas/how-to-set-up-history-based-autocompletion-in-zsh-k7o
+auto completion을 사용법이 담긴 site.
+#+end_note
+* .zsh에 붙여 넣기 한다.
+#+begin_note
+# AUTOCOMPLETION
+
+# initialize autocompletion
+autoload -U compinit
+compinit
+
+# history setup
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+HISTFILE=$HOME/.zhistory
+SAVEHIST=1000
+HISTSIZE=999
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt EXTENDED_HISTORY
+
+# autocompletion using arrow keys (based on history)
+bindkey '\e[A' history-search-backward
+bindkey '\e[B' history-search-forward
+
+# GENERAL
+
+# (bonus: Disable sound errors in Zsh)
+
+# never beep
+setopt NO_BEEP
+#+end_note
